@@ -13,8 +13,8 @@ function addNfHeader(event) {
     margin:0;
   }
   #nf-header {
-    color: #ffffff;
-    background-color: #4a4a4a;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     padding: 6px;
     position: relative;
     display: -webkit-box;
@@ -31,16 +31,17 @@ function addNfHeader(event) {
         -ms-flex-align: center;
             align-items: center;
     font-size: 16px;
+    font-family: inherit;
   }
   
   #nf-header a:hover {
-    color: #ffb900;
+    color: var(--primary-color);
     text-decoration: underline;
   }
   
   #nf-header * {
-    color: #ffffff;
-    background-color: #4a4a4a;
+    color: var(--text-color);
+    background-color: var(--bg-color);
     text-decoration: none;
     list-style: none;
     border: none;
@@ -64,9 +65,12 @@ function addNfHeader(event) {
   
   #nf-header .content .logo img {
     vertical-align: bottom;
-    width: 18px;
-    height: 18px;
+    width: 20px;
+    height: 20px;
     padding-right: 8px;
+    display: inline-block;
+    -o-object-fit: contain;
+       object-fit: contain;
   }
   
   #nf-header .content nav ul {
@@ -86,15 +90,15 @@ function addNfHeader(event) {
   }
   
   #nf-header .content nav ul li .btn {
-    background-color: #ffffff;
-    color: #4a4a4a;
+    background-color: var(--text-color);
+    color: var(--bg-color);
     padding: 6px 16px;
     border-radius: 40px;
   }
   
   #nf-header .content nav ul li .btn:hover {
-    background-color: #ffffff;
-    color: #ffb900;
+    background-color: var(--text-color);
+    color: var(--primary-color);
     text-decoration: none;
   }
   
@@ -102,7 +106,6 @@ function addNfHeader(event) {
     position: absolute;
     top: 50%;
     right: 0;
-    padding: 4px;
     -webkit-transform: translate(-50%, -50%);
             transform: translate(-50%, -50%);
     cursor: pointer;
@@ -113,6 +116,7 @@ function addNfHeader(event) {
     height: 18px;
     -o-object-fit: contain;
        object-fit: contain;
+    cursor: pointer;
   }
   
   #nf-header-content iframe {
@@ -125,6 +129,7 @@ function addNfHeader(event) {
     position: fixed;
     top: 0;
     right: 0;
+    z-index: 9999999999;
   }
   
   #nf-headerCTA img {
