@@ -7,7 +7,7 @@ function addNfHeader(event) {
   :root {
     --bg-color: #4a4a4a;
     --text-color: #ffffff;
-    --primary-color: #ffb900;
+    --primary-color: #f06428;
   }
   body{
     margin:0;
@@ -78,10 +78,17 @@ function addNfHeader(event) {
     -webkit-animation-name: fadeOutUp;
     animation-name: fadeOutUp;
   }
-  
+  #nf-sticky {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 99999;
+  }
   #nf-header {
-    color: #4a4a4a;
-    background-color: #ffffff;
+    color: var(--bg-color);
+    background-color: var(--text-color);
     -webkit-box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
             box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
     padding: 6px;
@@ -105,13 +112,13 @@ function addNfHeader(event) {
   }
   
   #nf-header a:hover {
-    color: #f06428;
+    color: var(--primary-color);
     text-decoration: underline;
   }
   
   #nf-header * {
-    color: #4a4a4a;
-    background-color: #ffffff;
+    color: var(--bg-color);
+    background-color: var(--text-color);
     text-decoration: none;
     list-style: none;
     border: none;
@@ -161,22 +168,22 @@ function addNfHeader(event) {
   }
   
   #nf-header .content nav ul li .btn {
-    background-color: #f06428;
-    color: #ffffff;
+    background-color: var(--primary-color);
+    color: var(--text-color);
     padding: 6px 16px;
     border-radius: 4px;
   }
   
   #nf-header .content nav ul li .btn:hover {
-    background-color: #ffffff;
-    color: #f06428;
+    background-color: var(--text-color);
+    color: var(--primary-color);
     text-decoration: none;
   }
   
   #nf-header .content nav ul li .btnSecondary {
     border-radius: 4px;
     padding: 6px 8px;
-    border: 0.04em solid #4a4a4a;
+    border: 0.04em solid var(--bg-color);
   }
   
   #nf-header .content nav ul li .btnSecondary:hover {
@@ -204,7 +211,7 @@ function addNfHeader(event) {
   }
   
   #nf-header-content {
-    background-color: #ffffff61;
+    background-color: var(--text-color)61;
     position: relative;
     z-index: 9999;
   }
@@ -234,6 +241,7 @@ function addNfHeader(event) {
        object-fit: cover;
   }
 </style>
+<div id="nf-sticky">
 <header id="nf-header" >
 <div class="content">
     <div class="logo" title="Powered by Boost.">
@@ -280,6 +288,7 @@ function addNfHeader(event) {
 </div>
 <div id="nf-headerCTA" title="Open Navbar" style="display: none;">
 <img src="//proj-demo.s-cdn.boostkit.dev/5e96e8a76e0572000109d196/cwd/img/openbar.png?v=6" alt="" />
+</div>
 </div>`;
   var div = document.createElement("div");
   div.innerHTML = template;
@@ -316,8 +325,8 @@ function addNfHeader(event) {
     link.href = 'https://bubblesspa.nowfloats.com/memberships';
     headID.appendChild(link);
   }
-  var links = ["https://bubblesspa.nowfloats.com/all-services/1","https://bubblesspa.nowfloats.com/memberships","https://bubblesspa.nowfloats.com/latest-updates/1","https://bubblesspa.nowfloats.com/image-gallery/1","https://5e9709e9c7627e00015c7b0c.preview.boostkit.dev/reservation"];
-  links.forEach(function(e){
+  var links = ["https://bubblesspa.nowfloats.com/all-services/1", "https://bubblesspa.nowfloats.com/memberships", "https://bubblesspa.nowfloats.com/latest-updates/1", "https://bubblesspa.nowfloats.com/image-gallery/1", "https://5e9709e9c7627e00015c7b0c.preview.boostkit.dev/reservation"];
+  links.forEach(function (e) {
     addPreload(e);
   });
 
@@ -330,8 +339,8 @@ function addNfHeader(event) {
     nfHeader.classList.add("fadeInDown")
     NFHeaderCta.style.display = "none";
     setTimeout(function () {
-        nfHeader.classList.remove("animated");
-        nfHeader.classList.remove("fadeInDown")
+      nfHeader.classList.remove("animated");
+      nfHeader.classList.remove("fadeInDown")
 
     }, 1000);
   });
@@ -348,13 +357,19 @@ function addNfHeader(event) {
   btnCloseNfNav.addEventListener('click', function (e) {
     e.preventDefault();
     nfHeader.classList.add("animated");
-        nfHeader.classList.add("fadeOutUp");
-        NFHeaderCta.style.display = "block";
-        setTimeout(function () {
-            nfHeader.classList.remove("animated");
-            nfHeader.classList.remove("fadeOutUp");
-            nfHeader.style.display = "none";
+    nfHeader.classList.add("fadeOutUp");
+    NFHeaderCta.style.display = "block";
+    setTimeout(function () {
+      nfHeader.classList.remove("animated");
+      nfHeader.classList.remove("fadeOutUp");
+      nfHeader.style.display = "none";
 
-        }, 1000);
-  })
+    }, 1000);
+  });
+  function changeColor(bgColor = '#4a4a4a', textColor = 'ffffff', primaryColor = '#f06428') {
+    let root = document.documentElement;
+    root.style.setProperty('----bg-color', bgColor);
+    root.style.setProperty('--text-color', textColor);
+    root.style.setProperty('--primary-color', primaryColor);
+  }
 }
