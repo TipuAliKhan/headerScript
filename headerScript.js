@@ -12,6 +12,73 @@ function addNfHeader(event) {
   body{
     margin:0;
   }
+  .animated {
+    -webkit-animation-duration: 1s;
+    animation-duration: 1s;
+    -webkit-animation-fill-mode: both;
+    animation-fill-mode: both;
+  }
+  @-webkit-keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  
+    to {
+      opacity: 1;
+      -webkit-transform: translate3d(0, 0, 0);
+      transform: translate3d(0, 0, 0);
+    }
+  }
+  
+  .fadeInDown {
+    -webkit-animation-name: fadeInDown;
+    animation-name: fadeInDown;
+  }
+  @-webkit-keyframes fadeOutUp {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+  
+  @keyframes fadeOutUp {
+    from {
+      opacity: 1;
+    }
+  
+    to {
+      opacity: 0;
+      -webkit-transform: translate3d(0, -100%, 0);
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+  
+  .fadeOutUp {
+    -webkit-animation-name: fadeOutUp;
+    animation-name: fadeOutUp;
+  }
+  
   #nf-header {
     color: #4a4a4a;
     background-color: #ffffff;
@@ -34,6 +101,7 @@ function addNfHeader(event) {
             align-items: center;
     font-size: 16px;
     font-family: inherit;
+    z-index: 99;
   }
   
   #nf-header a:hover {
@@ -128,10 +196,20 @@ function addNfHeader(event) {
     cursor: pointer;
   }
   
+  #nf-header-content {
+    background-color: #ffffff61;
+    position: relative;
+  }
+  
   #nf-header-content iframe {
-    width: 100%;
+    width: 94%;
     height: 100vh;
     border: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, 0);
+            transform: translate(-50%, 0);
   }
   
   #nf-headerCTA {
@@ -142,8 +220,8 @@ function addNfHeader(event) {
   }
   
   #nf-headerCTA img {
-    width: 130px;
-    height: 130px;
+    width: 80px;
+    height: 80px;
     -o-object-fit: cover;
        object-fit: cover;
   }
@@ -171,7 +249,7 @@ function addNfHeader(event) {
                 <a href="https://bubblesspa.nowfloats.com/image-gallery/1" class="openpop">Gallery</a>
             </li>
             <li>
-                <a href="tel:08042781862" title="Get in contact with us." class="btnSecondary"><span style="font-size: 14px;">Call</span>&nbsp;&nbsp;08042781862</a>
+                <a href="tel:08042781862" title="Get in contact with us." class="btnSecondary"><span style="font-size: 14px;">Call:</span>&nbsp;&nbsp;08042781862</a>
             </li>
             <li>
                 <a href="https://5e9709e9c7627e00015c7b0c.preview.boostkit.dev/reservation" class="openpop btn"
@@ -195,7 +273,7 @@ function addNfHeader(event) {
 </iframe>
 </div>
 <div id="nf-headerCTA" title="Open Navbar" style="display: none;">
-<img src="//proj-demo.s-cdn.boostkit.dev/5e96e8a76e0572000109d196/cwd/img/headerCTA.png?v=6" alt="" />
+<img src="//proj-demo.s-cdn.boostkit.dev/5e96e8a76e0572000109d196/cwd/img/openbar.png?v=6" alt="" />
 </div>`;
   debugger;
   var div = document.createElement("div");
@@ -216,22 +294,44 @@ function addNfHeader(event) {
   for (var i = 0; i < openlink.length; i++) {
     openlink[i].addEventListener("click", function (e) {
       e.preventDefault();
-      document.getElementById('nf-frame').src  = this.href;
+      document.getElementById('nf-frame').src = this.href;
       document.getElementById("nf-header-content").style.display = "block";
       btnCloseNfNav.style.display = "none";
       btnCloseNfFrame.style.display = "block";
     });
   }
 
+
+  function addPreload(url) {
+    var headID = document.getElementsByTagName('head')[0];
+    var link = document.createElement('link');
+
+    link.rel = 'preload'; link.as = 'document';
+
+    link.href = 'https://bubblesspa.nowfloats.com/memberships';
+    headID.appendChild(link);
+  }
+  var links = ["https://bubblesspa.nowfloats.com/all-services/1","https://bubblesspa.nowfloats.com/memberships","https://bubblesspa.nowfloats.com/latest-updates/1","https://bubblesspa.nowfloats.com/image-gallery/1","https://5e9709e9c7627e00015c7b0c.preview.boostkit.dev/reservation"];
+  links.forEach(function(e){
+    addPreload(e);
+  });
+
   // opens header and close cta to open header
-  NFHeaderCta.addEventListener("click", function(e){
+  NFHeaderCta.addEventListener("click", function (e) {
     e.preventDefault();
     nfHeader.style.display = "block";
+    nfHeader.classList.add("animated");
+    nfHeader.classList.add("fadeInDown")
     NFHeaderCta.style.display = "none";
+    setTimeout(function () {
+        nfHeader.classList.remove("animated");
+        nfHeader.classList.remove("fadeInDown")
+
+    }, 1000);
   });
 
   // closes ifram opened
-  btnCloseNfFrame.addEventListener('click',function(e){
+  btnCloseNfFrame.addEventListener('click', function (e) {
     e.preventDefault();
     NFIframeWrapper.style.display = "none";
     btnCloseNfFrame.style.display = "none";
@@ -239,9 +339,16 @@ function addNfHeader(event) {
   });
 
   // closes header & open cta to open header
-  btnCloseNfNav.addEventListener('click', function(e){
+  btnCloseNfNav.addEventListener('click', function (e) {
     e.preventDefault();
-    nfHeader.style.display = "none";
-    NFHeaderCta.style.display = "block";
+    nfHeader.classList.add("animated");
+        nfHeader.classList.add("fadeOutUp");
+        NFHeaderCta.style.display = "block";
+        setTimeout(function () {
+            nfHeader.classList.remove("animated");
+            nfHeader.classList.remove("fadeOutUp");
+            nfHeader.style.display = "none";
+
+        }, 1000);
   })
 }
