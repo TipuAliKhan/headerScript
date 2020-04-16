@@ -320,6 +320,7 @@ function addNfHeader(event) {
   // opens header and close cta to open header
   NFHeaderCta.addEventListener("click", function (e) {
     e.preventDefault();
+    window.scrollTo(0, 0);
     nfHeader.style.display = "block";
     nfHeader.classList.add("animated");
     nfHeader.classList.add("fadeInDown")
