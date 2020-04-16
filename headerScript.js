@@ -292,6 +292,7 @@ function addNfHeader(event) {
 </div>`;
   var div = document.createElement("div");
   div.innerHTML = template;
+  document.getElementsByTagName('body')[0].style.margin = "40px 0 0 0";
   document.getElementsByTagName("body")[0].prepend(div);
   window.scrollTo(0, 0);
   document.getElementById("nf-header-content").style.display = "none";
