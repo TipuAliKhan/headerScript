@@ -13,8 +13,10 @@ function addNfHeader(event) {
     margin:0;
   }
   #nf-header {
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: #4a4a4a;
+    background-color: #ffffff;
+    -webkit-box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
+            box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
     padding: 6px;
     position: relative;
     display: -webkit-box;
@@ -35,13 +37,13 @@ function addNfHeader(event) {
   }
   
   #nf-header a:hover {
-    color: var(--primary-color);
+    color: #f06428;
     text-decoration: underline;
   }
   
   #nf-header * {
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: #4a4a4a;
+    background-color: #ffffff;
     text-decoration: none;
     list-style: none;
     border: none;
@@ -90,16 +92,23 @@ function addNfHeader(event) {
   }
   
   #nf-header .content nav ul li .btn {
-    background-color: var(--text-color);
-    color: var(--bg-color);
+    background-color: #f06428;
+    color: #ffffff;
     padding: 6px 16px;
-    border-radius: 40px;
+    border-radius: 4px;
   }
   
   #nf-header .content nav ul li .btn:hover {
-    background-color: var(--text-color);
-    color: var(--primary-color);
+    background-color: #ffffff;
+    color: #f06428;
     text-decoration: none;
+  }
+  
+  #nf-header .content nav ul li .btnSecondary {
+    -webkit-box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
+            box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
+    border-radius: 4px;
+    padding: 6px 8px;
   }
   
   #nf-header .action {
@@ -139,7 +148,7 @@ function addNfHeader(event) {
        object-fit: cover;
   }
 </style>
-<header id="nf-header" style="display: none;">
+<header id="nf-header" >
 <div class="content">
     <div class="logo">
         <a href="#">
@@ -162,7 +171,7 @@ function addNfHeader(event) {
                 <a href="https://bubblesspa.nowfloats.com/image-gallery/1" class="openpop">Gallery</a>
             </li>
             <li>
-                <a href="tel:08042781862" title="Get in contact with us.">08042781862</a>
+                <a href="tel:08042781862" title="Get in contact with us." class="btnSecondary"><span style="font-size: 14px;">Call</span>&nbsp;&nbsp;08042781862</a>
             </li>
             <li>
                 <a href="https://5e9709e9c7627e00015c7b0c.preview.boostkit.dev/reservation" class="openpop btn"
@@ -185,7 +194,7 @@ function addNfHeader(event) {
     <p>Your browser does not support iframes.</p>
 </iframe>
 </div>
-<div id="nf-headerCTA" title="Open Navbar">
+<div id="nf-headerCTA" title="Open Navbar" style="display: none;">
 <img src="//proj-demo.s-cdn.boostkit.dev/5e96e8a76e0572000109d196/cwd/img/headerCTA.png?v=6" alt="" />
 </div>`;
   debugger;
