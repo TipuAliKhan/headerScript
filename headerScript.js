@@ -258,7 +258,7 @@ function addNfHeader(event) {
                 <a href="tel:08042781862" title="Get in contact with us." class="btnSecondary">Call:&nbsp;08042781862</a>
             </li>
             <li>
-                <a href="https://5e9709e9c7627e00015c7b0c.preview.boostkit.dev/reservation" class="openpop btn"
+                <a href="https://bubblesspa.nowfloats.com/reservation" class="openpop btn"
                     title="Book your appointment">Book Appointment</a>
             </li>
         </ul>
