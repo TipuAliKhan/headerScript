@@ -135,8 +135,8 @@ function addNfHeader(event) {
   
   #nf-header .content .logo img {
     vertical-align: bottom;
-    width: 20px;
-    height: 20px;
+    width: 24px;
+    height: 24px;
     padding-right: 8px;
     display: inline-block;
     -o-object-fit: contain;
@@ -157,6 +157,7 @@ function addNfHeader(event) {
   
   #nf-header .content nav ul li {
     padding: 10px 30px 10px 0;
+    margin: 0;
   }
   
   #nf-header .content nav ul li .btn {
@@ -173,10 +174,16 @@ function addNfHeader(event) {
   }
   
   #nf-header .content nav ul li .btnSecondary {
-    -webkit-box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
-            box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
     border-radius: 4px;
     padding: 6px 8px;
+    border: 0.04em solid #4a4a4a;
+  }
+  
+  #nf-header .content nav ul li .btnSecondary:hover {
+    -webkit-box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
+            box-shadow: 0 1px 7px 0 rgba(0, 0, 0, 0.21);
+    border: none;
+    text-decoration: none;
   }
   
   #nf-header .action {
@@ -229,11 +236,9 @@ function addNfHeader(event) {
 </style>
 <header id="nf-header" >
 <div class="content">
-    <div class="logo">
-        <a href="#">
+    <div class="logo" title="Powered by Boost.">
             <img src="//proj-demo.s-cdn.boostkit.dev/5e96e8a76e0572000109d196/cwd/img/boost.png?v=6" alt="" />
-            Check out our exclusive content
-        </a>
+            Checkout our exclusive stuff…
     </div>
     <nav>
         <ul>
@@ -249,8 +254,8 @@ function addNfHeader(event) {
             <li>
                 <a href="https://bubblesspa.nowfloats.com/image-gallery/1" class="openpop">Gallery</a>
             </li>
-            <li>
-                <a href="tel:08042781862" title="Get in contact with us." class="btnSecondary"><span style="font-size: 14px;">Call:</span>&nbsp;&nbsp;08042781862</a>
+            <li style="padding-right: 20px;">
+                <a href="tel:08042781862" title="Get in contact with us." class="btnSecondary">Call:&nbsp;08042781862</a>
             </li>
             <li>
                 <a href="https://5e9709e9c7627e00015c7b0c.preview.boostkit.dev/reservation" class="openpop btn"
@@ -276,7 +281,6 @@ function addNfHeader(event) {
 <div id="nf-headerCTA" title="Open Navbar" style="display: none;">
 <img src="//proj-demo.s-cdn.boostkit.dev/5e96e8a76e0572000109d196/cwd/img/openbar.png?v=6" alt="" />
 </div>`;
-  debugger;
   var div = document.createElement("div");
   div.innerHTML = template;
   document.getElementsByTagName("body")[0].prepend(div);
