@@ -199,6 +199,7 @@ function addNfHeader(event) {
   #nf-header-content {
     background-color: #ffffff61;
     position: relative;
+    z-index: 9999;
   }
   
   #nf-header-content iframe {
