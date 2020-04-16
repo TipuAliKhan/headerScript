@@ -280,7 +280,7 @@ function addNfHeader(event) {
   var div = document.createElement("div");
   div.innerHTML = template;
   document.getElementsByTagName("body")[0].prepend(div);
-
+  window.scrollTo(0, 0);
   document.getElementById("nf-header-content").style.display = "none";
   var openlink = document.getElementsByClassName("openpop");
 
