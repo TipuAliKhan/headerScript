@@ -203,7 +203,7 @@ function addNfHeader(event) {
   }
   
   #nf-header-content iframe {
-    width: 94%;
+    width: 100%;
     height: 100vh;
     border: none;
     position: absolute;
